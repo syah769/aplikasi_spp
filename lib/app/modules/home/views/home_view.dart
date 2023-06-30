@@ -9,9 +9,26 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('HomeView'),
-        centerTitle: true,
+        leading: Container(
+          padding: const EdgeInsets.only(
+            left: 3,
+            top: 3,
+            bottom: 3,
+          ),
+          child: Image.asset(
+            "images/logo.png",
+          ),
+        ),
+        elevation: 0,
+        backgroundColor: Colors.white,
+        title: const Text(
+          'SPP ONLINE',
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
       ),
       body: const Center(
         child: Text(
