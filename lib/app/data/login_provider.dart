@@ -5,7 +5,7 @@ class LoginProvider extends GetConnect {
     var myHeader = {
       'Accept': 'application/json',
     };
-    return post('https://pembayaranspp.test/api/login/waris', data,
+    return post('http://10.0.2.2:8000/api/login/waris', data,
         headers: myHeader);
   }
 }
