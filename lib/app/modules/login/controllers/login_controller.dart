@@ -26,12 +26,13 @@ class LoginController extends GetxController {
       };
       LoginProvider().auth(data).then((value) {
         if (value.statusCode == 200) {
-          Get.snackbar(
-            "Success",
-            "Login Berhasil",
-            backgroundColor: Colors.green,
-            colorText: Colors.white,
-          );
+          //untuk dapatkan semua body dari reponse body
+          var responseBody = value.body;
+          //ni kalau nak display/ambik salah satu dalam response body
+          var data = responseBody['data'];
+          var name = data['name'];
+          var token = data['token'];
+          print(token);
         } else {
           Get.snackbar(
             "Error",
