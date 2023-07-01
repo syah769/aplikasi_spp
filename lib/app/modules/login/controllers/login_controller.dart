@@ -1,3 +1,4 @@
+import 'package:aplikasi_spp/app/data/login_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -17,12 +18,27 @@ class LoginController extends GetxController {
         colorText: Colors.white,
       );
     } else {
-      Get.snackbar(
-        "Success",
-        "Login Berhasil",
-        backgroundColor: Colors.green,
-        colorText: Colors.white,
-      );
+      var data = {
+        "email": email,
+        "password": password,
+      };
+      LoginProvider().auth(data).then((value) {
+        if (value.statusCode == 200) {
+          Get.snackbar(
+            "Success",
+            "Login Berhasil",
+            backgroundColor: Colors.green,
+            colorText: Colors.white,
+          );
+        } else {
+          Get.snackbar(
+            "Error",
+            "Login Gagal",
+            backgroundColor: Colors.red,
+            colorText: Colors.white,
+          );
+        }
+      });
     }
   }
 }
