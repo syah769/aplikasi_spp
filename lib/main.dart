@@ -1,6 +1,7 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'app/routes/app_pages.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -11,7 +12,6 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   // If you're going to use other Firebase services in the background, such as Firestore,
   // make sure you call `initializeApp` before using other Firebase services.
   await Firebase.initializeApp();
-
   print("Handling a background message: ${message.messageId}");
 }
 
@@ -45,12 +45,16 @@ void main() async {
     }
   });
 
+  // Check login status
+  final storage = new FlutterSecureStorage();
+  String? isLogin = await storage.read(key: 'isLogin');
+
   runApp(
     GetMaterialApp(
       title: "Application",
-      initialRoute: AppPages.INITIAL,
+      initialRoute:
+          isLogin != null && isLogin == 'true' ? Routes.MAIN_MENU : Routes.HOME,
       getPages: AppPages.routes,
-      //install flutter easyloading package and set at main.dart
       builder: EasyLoading.init(),
       debugShowCheckedModeBanner: false,
     ),

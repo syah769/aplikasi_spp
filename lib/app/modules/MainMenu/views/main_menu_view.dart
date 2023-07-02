@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:aplikasi_spp/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -19,9 +20,19 @@ class MainMenuView extends GetView<MainMenuController> {
               title: Text('Halo, ${snapshot.data}'),
             ),
             body: Center(
-              child: Text(
-                'MainMenuView is working',
-                style: TextStyle(fontSize: 20),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'MainMenuView is working',
+                  ),
+                  ElevatedButton(
+                      onPressed: () async {
+                        await controller.clearStorage();
+                        Get.offAllNamed(Routes.HOME);
+                      },
+                      child: Text("Logout")),
+                ],
               ),
             ),
           );

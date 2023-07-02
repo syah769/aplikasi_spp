@@ -44,6 +44,7 @@ class LoginController extends GetxController {
           await storage.write(key: 'token', value: data['token']);
           await storage.write(key: 'email', value: data['data']['email']);
           await storage.write(key: 'id', value: data['data']['id'].toString());
+          await storage.write(key: 'isLogin', value: 'true');
           Get.offAllNamed(Routes.MAIN_MENU);
         } else {
           Get.snackbar(
