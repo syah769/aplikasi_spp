@@ -13,8 +13,11 @@ class LoginController extends GetxController {
 
   //create sebuah function/method
   Future<void> auth() async {
-    final fcmToken = await FirebaseMessaging.instance.getToken();
-    print(fcmToken);
+    String token = "";
+    await FirebaseMessaging.instance.getToken().then((value) {
+      token = value!;
+    });
+    // print(token);
     String email = txtEmail.text;
     String password = txtPassword.text;
     if (email.isEmpty || password.isEmpty) {
@@ -29,6 +32,7 @@ class LoginController extends GetxController {
       var data = {
         "email": email,
         "password": password,
+        "fcm_token": token,
       };
       LoginProvider().auth(data).then((value) async {
         if (value.statusCode == 200) {
@@ -40,7 +44,7 @@ class LoginController extends GetxController {
           await storage.write(key: 'token', value: data['token']);
           await storage.write(key: 'email', value: data['data']['email']);
           await storage.write(key: 'id', value: data['data']['id'].toString());
-          // Get.offAllNamed(Routes.MAIN_MENU);
+          Get.offAllNamed(Routes.MAIN_MENU);
         } else {
           Get.snackbar(
             "Error",
