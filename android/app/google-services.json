@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "34964086966",
+    "project_id": "spp-online-44b6c",
+    "storage_bucket": "spp-online-44b6c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:34964086966:android:b28457be75d4ce227a0617",
+        "android_client_info": {
+          "package_name": "com.example.aplikasi_spp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "34964086966-8rccbfcc7uuoseuiqi5dpn1ee5bp0di1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYlfz3jPOvD4nUCG0x6WZwRPANBvDT-rk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "34964086966-8rccbfcc7uuoseuiqi5dpn1ee5bp0di1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
