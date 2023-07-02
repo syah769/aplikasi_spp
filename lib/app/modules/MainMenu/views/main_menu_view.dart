@@ -15,6 +15,10 @@ class MainMenuView extends GetView<MainMenuController> {
       backgroundColor: Color.fromARGB(255, 7, 14, 142),
       fixedSize: Size(Get.width - 70, 40),
     );
+    var textStyle = TextStyle(
+      color: Colors.white,
+      fontWeight: FontWeight.bold,
+    );
     return FutureBuilder(
       future: controller.storage.read(key: "name"),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -64,10 +68,7 @@ class MainMenuView extends GetView<MainMenuController> {
                         onPressed: () {},
                         child: Text(
                           " UPDATE PROFILE",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
+                          style: textStyle,
                         ),
                         style: buttonStyle,
                       ),
@@ -75,11 +76,17 @@ class MainMenuView extends GetView<MainMenuController> {
                       ElevatedButton(
                         onPressed: () {},
                         child: Text(
-                          " DATA PEMBAYARAN",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
+                          " INVOICE BELUM DIBAYAR",
+                          style: textStyle,
+                        ),
+                        style: buttonStyle,
+                      ),
+                      SizedBox(height: 10),
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: Text(
+                          " DATA BUDI",
+                          style: textStyle,
                         ),
                         style: buttonStyle,
                       ),
@@ -91,10 +98,7 @@ class MainMenuView extends GetView<MainMenuController> {
                         },
                         child: Text(
                           " LOGOUT",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
+                          style: textStyle,
                         ),
                         style: buttonStyle,
                       ),
