@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, sort_child_properties_last
 
 import 'package:aplikasi_spp/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
@@ -11,28 +11,93 @@ class MainMenuView extends GetView<MainMenuController> {
 
   @override
   Widget build(BuildContext context) {
+    var buttonStyle = ElevatedButton.styleFrom(
+      backgroundColor: Color.fromARGB(255, 7, 14, 142),
+      fixedSize: Size(Get.width - 70, 40),
+    );
     return FutureBuilder(
       future: controller.storage.read(key: "name"),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         if (snapshot.hasData) {
           return Scaffold(
+            backgroundColor: Colors.white,
             appBar: AppBar(
-              title: Text('Halo, ${snapshot.data}'),
+              leading: Container(
+                padding: EdgeInsets.only(
+                  left: 3,
+                  top: 3,
+                  bottom: 3,
+                ),
+                child: Image.asset(
+                  "images/logo.png",
+                ),
+              ),
+              elevation: 0,
+              backgroundColor: Colors.white,
+              title: Text(
+                'SPP ONLINE',
+                style: TextStyle(
+                  color: Colors.black,
+                ),
+              ),
             ),
-            body: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'MainMenuView is working',
+            body: SingleChildScrollView(
+              child: Center(
+                child: Container(
+                  padding: EdgeInsets.only(
+                    left: 20,
+                    right: 20,
                   ),
-                  ElevatedButton(
-                      onPressed: () async {
-                        await controller.clearStorage();
-                        Get.offAllNamed(Routes.HOME);
-                      },
-                      child: Text("Logout")),
-                ],
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SizedBox(height: 80),
+                      Text(
+                        "SMKAY",
+                        style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(height: 30),
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: Text(
+                          " UPDATE PROFILE",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        style: buttonStyle,
+                      ),
+                      SizedBox(height: 10),
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: Text(
+                          " DATA PEMBAYARAN",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        style: buttonStyle,
+                      ),
+                      SizedBox(height: 10),
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: Text(
+                          " LOGOUT",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        style: buttonStyle,
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ),
           );
