@@ -85,7 +85,10 @@ class MainMenuView extends GetView<MainMenuController> {
                       ),
                       SizedBox(height: 10),
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () async {
+                          await controller.clearStorage();
+                          Get.offAllNamed(Routes.HOME);
+                        },
                         child: Text(
                           " LOGOUT",
                           style: TextStyle(
